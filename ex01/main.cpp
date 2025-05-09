@@ -10,19 +10,14 @@ int	main(void)
 	while (1)
 	{
 		std::cout << "Enter a command (ADD, SEARCH, EXIT): ";
-		std::getline(std::cin, command);
+		if (!std::getline(std::cin, command))
+			return (0);
 
 		if (command == "ADD")
-		{
 			phonebook.addContact();
-		}
 		else if (command == "SEARCH")
-		{
-			phonebook.displayContacts();	
-		}
+			phonebook.searchContact();
 		else if (command == "EXIT")
-		{
 			break;
-		}
 	}
 }

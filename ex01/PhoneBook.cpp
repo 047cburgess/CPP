@@ -1,28 +1,28 @@
 #include "PhoneBook.hpp"
 #include <iostream>
 #include <iomanip>
-#include <iostring>
+#include <string>
 
 // mini constructor initialisation list
-PhoneBook::PhoneBook() : contact_count(0), index(0) {}
+PhoneBook::PhoneBook() : contact_count(0), index(0) {};
 
 // Add a new contact to phonebook
-void	Phonebook::addContact()
+void	PhoneBook::addContact()
 {
 	Contact	new_contact;
 	std::string	user_input;
 
 	std::cout << "Enter first name: ";
-	std::getline(std:icn, user_input);
+	std::getline(std::cin, user_input);
 	if (user_input.empty())
 	{
 		std::cout << "Error: Empty field." << std::endl;
 		return;
 	}
-	new_contact.setFirstName(input);
+	new_contact.setFirstName(user_input);
 
 	std::cout << "Enter last name: ";
-	std::getline(std::cin, input);
+	std::getline(std::cin, user_input);
 	if (user_input.empty())
 	{
 		std::cout << "Error: Empty field." << std::endl;
@@ -30,8 +30,17 @@ void	Phonebook::addContact()
 	}
 	new_contact.setLastName(user_input);
 
+	std::cout << "Enter nick name: ";
+	std::getline(std::cin, user_input);
+	if (user_input.empty())
+	{
+		std::cout << "Error: Empty field." << std::endl;
+		return;
+	}
+	new_contact.setNickName(user_input);
+
 	std::cout << "Enter phone number: ";
-	std::getline(std::cin, input);
+	std::getline(std::cin, user_input);
 	if (user_input.empty())
 	{
 		std::cout << "Error: Empty field." << std::endl;
@@ -40,7 +49,7 @@ void	Phonebook::addContact()
 	new_contact.setPhoneNumber(user_input);
 
 	std::cout << "Enter your darkest secret: ";
-	std::getline(std::cin, input);
+	std::getline(std::cin, user_input);
 	if (user_input.empty())
 	{
 		std::cout << "Error: Empty field." << std::endl;
@@ -57,7 +66,7 @@ void	Phonebook::addContact()
 	}
 	else
 		index = 0;
-	std::count << "Contact added" << std::endl;
+	std::cout << "Contact added" << std::endl;
 }
 
 void	PhoneBook::displayContacts() const
@@ -66,19 +75,19 @@ void	PhoneBook::displayContacts() const
 	std::cout << std::setw(10) << "Index" << "|"
 		<< std::setw(10) << "First Name" << "|"
 		<< std:: setw(10) << "Last Name" << "|"
-		<< std::setw(10) << "Nickname"
+		<< std::setw(10) << "Nickname" << std::endl;
 
 	// Display all the contacts
 	for (int i = 0; i < contact_count; i++)
 	{
 		std::cout << std::setw(10) << i << "|"
-		<< std::setw(10) << truncateField(contacts[i].getFirstname()) << "|"
-		<< std::setw(10) << truncateField(contacts[i].getLastname()) << "|"
-		<< std::setw(10) << truncateField(contacts[i].getNickname()) << std::endl;
+		<< std::setw(10) << truncateField(contacts[i].getFirstName()) << "|"
+		<< std::setw(10) << truncateField(contacts[i].getLastName()) << "|"
+		<< std::setw(10) << truncateField(contacts[i].getNickName()) << std::endl;
 	}
 }
 
-void	PhoneBook::displayContactindex(int index) const
+void	PhoneBook::displayContactIndex(int index) const
 {
 	// Check if the given index is valid
 	if (index < 0 || index >= contact_count)
@@ -90,8 +99,9 @@ void	PhoneBook::displayContactindex(int index) const
 	// Print the details of the valid index
 	std::cout << "First Name: " << contacts[index].getFirstName() << std::endl;
 	std::cout << "Last Name: " << contacts[index].getLastName() << std::endl;
-	std::cout << "Nickname: " << contacts[index].getNickname() << std::endl;
+	std::cout << "Nickname: " << contacts[index].getNickName() << std::endl;
 	std::cout << "Phone Number: " << contacts[index].getPhoneNumber() << std::endl;
+	std::cout << "Darkest Secret: " << contacts[index].getDarkestSecret() << std::endl;
 }
 
 int	PhoneBook::getContactCount() const
@@ -100,5 +110,25 @@ int	PhoneBook::getContactCount() const
 }
 
 
+std::string truncateField(const std::string &str)
+{
+	if (str.length() > MAX_FIELD_LENGTH)
+		return (str.substr(0, MAX_FIELD_LENGTH - 1) + ".");
+	else
+		return (str);
+}
 
+void	PhoneBook::searchContact() const
+{
+	std::string contact_index;
 
+	if (contact_count == 0)
+	{
+		std::cout << "No contacts to display." << std::endl;
+		return;
+	}
+	this->displayContacts();
+	std::cout << "Provide desired contact index: ";
+	std::getline(std::cin, contact_index);
+	this->displayContactIndex(0);
+}

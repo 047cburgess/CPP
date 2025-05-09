@@ -4,6 +4,11 @@
 #include "Contact.hpp"
 #include <string>
 
+#define MAX_CONTACTS 8
+#define MAX_FIELD_LENGTH 10
+
+std::string truncateField(const std::string &str);
+
 class	PhoneBook
 {
 	private:
@@ -13,11 +18,12 @@ class	PhoneBook
 		std::string truncate(const std::string &str) const;
 
 	public:
-		PhoneBook Phonebook();
+		PhoneBook();
 		void	addContact();
 		void	displayContacts() const;
 		void	displayContactIndex(int index) const;
 		int	getContactCount() const;
+		void	searchContact() const;
 };
 
 #endif
