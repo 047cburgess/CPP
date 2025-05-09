@@ -1,6 +1,9 @@
 NAME = phonebook
 
-SRCS = main.cpp
+SRCS = main.cpp \
+       Contact.cpp \
+       PhoneBook.cpp \
+
 OBJS = $(SRCS:.cpp=.o)
 
 CC = clang++
@@ -11,7 +14,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.c
+%.o: %.cpp
 	$(CC) $(CFLAGS) $< -c $@
 
 clean:
