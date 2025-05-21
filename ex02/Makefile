@@ -1,6 +1,8 @@
-NAME = megaphone
+NAME = account
 
-SRCS = megaphone.cpp
+SRCS = Account.cpp \
+       tests.cpp \
+
 OBJS = $(SRCS:.cpp=.o)
 
 CC = clang++
@@ -11,7 +13,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.c
+%.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

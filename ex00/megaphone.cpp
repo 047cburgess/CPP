@@ -1,6 +1,4 @@
 #include <iostream> // needed for "writing"
-#include <cctype>
-
 
 int	main(int ac, char **av)
 {

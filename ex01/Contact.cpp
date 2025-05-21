@@ -13,51 +13,51 @@ Contact::~Contact(void)
 // Setter functions
 void	Contact::setFirstName(const std::string &value)
 {
-	first_name = value;
+	_firstName = value;
 }
 
 void	Contact::setLastName(const std::string &value)
 {
-	last_name = value;
+	_lastName = value;
 }
 
 void	Contact::setPhoneNumber(const std::string &value)
 {
-	phone_number = value;
+	_phoneNumber = value;
 }
 
 void	Contact::setNickName(const std::string &value)
 {
-	nick_name = value;
+	_nickName = value;
 }
 
 void	Contact::setDarkestSecret(const std::string &value)
 {
-	darkest_secret = value;
+	_darkestSecret = value;
 }
 
 // Getter functions
 std::string Contact::getFirstName() const
 {
-	return (first_name);
+	return (_firstName);
 }
 
 std::string Contact::getLastName() const
 {
-	return (last_name);
+	return (_lastName);
 }
 
 std::string Contact::getNickName() const
 {
-	return (nick_name);
+	return (_nickName);
 }
 
 std::string Contact::getPhoneNumber() const
 {
-	return (phone_number);
+	return (_phoneNumber);
 }
 
 std::string Contact::getDarkestSecret() const
 {
-	return (darkest_secret);
+	return (_darkestSecret);
 }

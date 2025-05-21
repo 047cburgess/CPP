@@ -11,12 +11,6 @@ std::string truncateField(const std::string &str);
 
 class	PhoneBook
 {
-	private:
-		Contact	contacts[8];
-		int	contact_count;
-		int	index;
-		std::string truncate(const std::string &str) const;
-
 	public:
 		PhoneBook();
 		void	addContact();
@@ -24,6 +18,12 @@ class	PhoneBook
 		void	displayContactIndex(int index) const;
 		int	getContactCount() const;
 		void	searchContact() const;
+
+	private:
+		Contact	_contacts[8];
+		int	_contactCount;
+		int	_index;
+		std::string _truncate(const std::string &str) const;
 };
 
 #endif

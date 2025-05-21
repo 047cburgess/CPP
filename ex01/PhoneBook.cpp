@@ -4,7 +4,7 @@
 #include <string>
 
 // mini constructor initialisation list
-PhoneBook::PhoneBook() : contact_count(0), index(0) {};
+PhoneBook::PhoneBook() : _contactCount(0), _index(0) {};
 
 // Add a new contact to phonebook
 void	PhoneBook::addContact()
@@ -58,15 +58,14 @@ void	PhoneBook::addContact()
 	new_contact.setDarkestSecret(user_input);
 
 	// save finished contact to the phonebook
-	contacts[index] = new_contact;
-	if (contact_count < MAX_CONTACTS)
+	_contacts[_index] = new_contact;
+	if (_contactCount < MAX_CONTACTS)
 	{
-		contact_count++;
-		index++;
+		_contactCount++;
+		_index++;
 	}
 	else
-		index = 0;
-	std::cout << "Contact added" << std::endl;
+		_index = 0;
 }
 
 void	PhoneBook::displayContacts() const
@@ -78,35 +77,35 @@ void	PhoneBook::displayContacts() const
 		<< std::setw(10) << "Nickname" << std::endl;
 
 	// Display all the contacts
-	for (int i = 0; i < contact_count; i++)
+	for (int i = 0; i < _contactCount; i++)
 	{
 		std::cout << std::setw(10) << i << "|"
-		<< std::setw(10) << truncateField(contacts[i].getFirstName()) << "|"
-		<< std::setw(10) << truncateField(contacts[i].getLastName()) << "|"
-		<< std::setw(10) << truncateField(contacts[i].getNickName()) << std::endl;
+		<< std::setw(10) << truncateField(_contacts[i].getFirstName()) << "|"
+		<< std::setw(10) << truncateField(_contacts[i].getLastName()) << "|"
+		<< std::setw(10) << truncateField(_contacts[i].getNickName()) << std::endl;
 	}
 }
 
 void	PhoneBook::displayContactIndex(int index) const
 {
 	// Check if the given index is valid
-	if (index < 0 || index >= contact_count)
+	if (index < 0 || index >= _contactCount)
 	{
 		std::cout << "Invalid index." << std::endl;
 		return ;
 	}
 
 	// Print the details of the valid index
-	std::cout << "First Name: " << contacts[index].getFirstName() << std::endl;
-	std::cout << "Last Name: " << contacts[index].getLastName() << std::endl;
-	std::cout << "Nickname: " << contacts[index].getNickName() << std::endl;
-	std::cout << "Phone Number: " << contacts[index].getPhoneNumber() << std::endl;
-	std::cout << "Darkest Secret: " << contacts[index].getDarkestSecret() << std::endl;
+	std::cout << "First Name: " << _contacts[index].getFirstName() << std::endl;
+	std::cout << "Last Name: " << _contacts[index].getLastName() << std::endl;
+	std::cout << "Nickname: " << _contacts[index].getNickName() << std::endl;
+	std::cout << "Phone Number: " << _contacts[index].getPhoneNumber() << std::endl;
+	std::cout << "Darkest Secret: " << _contacts[index].getDarkestSecret() << std::endl;
 }
 
 int	PhoneBook::getContactCount() const
 {
-	return (contact_count);
+	return (_contactCount);
 }
 
 
@@ -122,7 +121,7 @@ void	PhoneBook::searchContact() const
 {
 	std::string contact_index;
 
-	if (contact_count == 0)
+	if (_contactCount == 0)
 	{
 		std::cout << "No contacts to display." << std::endl;
 		return;

@@ -7,7 +7,7 @@ SRCS = main.cpp \
 OBJS = $(SRCS:.cpp=.o)
 
 CC = clang++
-CFLAGS = -Wall -Werror -Wextra -std=c++98
+CFLAGS = -Wall -Werror -Wextra -std=c++98 -g3
 
 all: $(NAME)
 
